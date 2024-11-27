@@ -1,16 +1,16 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
 import LayoutDashboard from "@/pages/LayoutDashboard"
-import Anggota from "@/container/Anggota"
-import Acara from '@/container/Acara'
+import Member from "@/container/Member"
+import Event from '@/container/Event'
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <LayoutDashboard />,
     children: [
-      {path: "dashboard/anggota", element: <Anggota />},
-      {path: "dashboard/acara", element: <Acara />},
+      {path: "dashboard/anggota", element: <Member />},
+      {path: "dashboard/acara", element: <Event />},
     ]
   }
 ])
