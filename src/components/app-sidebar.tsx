@@ -10,12 +10,13 @@ import {
   SidebarHeader,
 } from '@/components/ui/sidebar';
 import {NavLink} from 'react-router-dom';
-import {Users, Calendar1} from 'lucide-react';
+import {Users, Calendar1,Home} from 'lucide-react';
 
 const sidebarItem = [
   {
     title: 'Dashboard',
     menus: [
+      {label: 'Dashboard', url: '/dashboard', icon: Home},
       {label: 'Anggota', url: '/anggota', icon: Users},
       {label: 'Acara', url: '/acara', icon: Calendar1},
     ],
