@@ -25,6 +25,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { useNavigate } from 'react-router-dom';
 
 export const EventFormSchema = z.object({
   name: z.string().min(1, {message: 'Nama tidak boleh kosong'}), // min(1) memastikan input tidak kosong
@@ -53,7 +54,7 @@ export function EventForm() {
   });
 
   const members = getMembers();
-
+  const navigate = useNavigate();
   function onSubmit(values: z.infer<typeof EventFormSchema>) {
     try {
       // console.log(values);
@@ -63,7 +64,7 @@ export function EventForm() {
         title: 'Event berhasil ditambahkan.',
       });
       setTimeout(() => {
-        window.location.reload();
+        navigate('/');
       }, 1000);
       console.log(form.getValues());
     } catch (error) {

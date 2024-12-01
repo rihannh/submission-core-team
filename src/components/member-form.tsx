@@ -21,6 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { useNavigate } from 'react-router-dom';
 
 export const MemberFormSchema = z.object({
   nim: z.string().min(9, {
@@ -53,6 +54,9 @@ export function MemberForm() {
       email: '',
     },
   });
+
+  const navigate = useNavigate();
+
   function onSubmit(values: z.infer<typeof MemberFormSchema>) {
     try {
       console.log(values);
@@ -62,7 +66,7 @@ export function MemberForm() {
         description: `${values.name} berhasil menjadi member.`,
       });
       setTimeout(() => {
-        window.location.reload();
+        navigate('/');
       }, 1000);
     } catch (error) {
       toast({
