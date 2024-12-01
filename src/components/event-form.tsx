@@ -170,7 +170,7 @@ export function EventForm() {
               <FormLabel>Anggota</FormLabel>
               <FormControl>
                 <ul className='space-y-2 max-h-60 overflow-y-auto p-2 border border-gray-300 rounded'>
-                  {members.map((member) => (
+                  {members.map((member: { id: string; name: string; division: string }) => (
                     <li key={member.id}>
                       <label className='flex items-center'>
                         <input

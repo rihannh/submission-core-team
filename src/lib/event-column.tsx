@@ -2,7 +2,7 @@ import {ColumnDef} from '@tanstack/react-table';
 import {ArrowUpDown} from 'lucide-react';
 import {Button} from '../components/ui/button';
 import {Dialog, DialogTrigger, DialogContent} from '@radix-ui/react-dialog';
-import { Members } from './member-column';
+
 
 export type Events = {
   id: string;
@@ -46,7 +46,7 @@ export const EventsColumn: ColumnDef<Events>[] = [
     accessorKey: 'members',
     header: 'Anggota',
     cell: ({row}) => {
-      const members = row.getValue('members') || [];
+      const members: string[] = row.getValue('members') as string[] || [];
       return (
         <Dialog>
           <DialogTrigger asChild>
