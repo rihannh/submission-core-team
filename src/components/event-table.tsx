@@ -31,19 +31,19 @@ import {Button} from '@/components/ui/button';
 import {Input} from '@/components/ui/input';
 import {Plus, Trash2} from 'lucide-react';
 import {Dialog, DialogContent, DialogTrigger} from '@/components/ui/dialog';
-import {MemberForm} from './member-form';
+import { EventForm } from './event-form';
 
-interface MemberTableProps<TData, TValue> {
+interface EventTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
   onDelete: (id: string) => void;
 }
 
-export function MemberTable<TData, TValue>({
+export function EventTable<TData, TValue>({
   columns,
   data,
   onDelete,
-}: MemberTableProps<TData, TValue>) {
+}: EventTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -83,11 +83,11 @@ export function MemberTable<TData, TValue>({
         <Dialog>
           <DialogTrigger>
             <Button>
-              Tambah Member <Plus />
+              Tambah Event <Plus />
             </Button>
           </DialogTrigger>
-          <DialogContent>
-            <MemberForm />
+          <DialogContent className='max-h-[80vh] overflow-y-auto'>
+            <EventForm /> 
           </DialogContent>
         </Dialog>
       </div>

@@ -16,8 +16,8 @@ const sidebarItem = [
   {
     title: 'Dashboard',
     menus: [
-      {label: 'Anggota', url: '/dashboard/anggota', icon: Users},
-      {label: 'Acara', url: '/dashboard/acara', icon: Calendar1},
+      {label: 'Anggota', url: '/anggota', icon: Users},
+      {label: 'Acara', url: '/acara', icon: Calendar1},
     ],
   },
 ];

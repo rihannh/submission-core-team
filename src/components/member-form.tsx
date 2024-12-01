@@ -1,7 +1,6 @@
 import {zodResolver} from '@hookform/resolvers/zod';
 import {useForm} from 'react-hook-form';
 import {z} from 'zod';
-
 import {Button} from '@/components/ui/button';
 import {
   Form,
@@ -12,6 +11,8 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import {Input} from '@/components/ui/input';
+import {toast} from '@/hooks/use-toast';
+import {addMember} from '@/lib/member';
 
 import {
   Select,
@@ -21,7 +22,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
-const MemberFormSchema = z.object({
+export const MemberFormSchema = z.object({
   nim: z.string().min(9, {
     message: 'Minimal 9 karakter.',
   }),
@@ -52,9 +53,23 @@ export function MemberForm() {
       email: '',
     },
   });
-
   function onSubmit(values: z.infer<typeof MemberFormSchema>) {
-    console.log(values);
+    try {
+      console.log(values);
+      addMember(values);
+      toast({
+        title: 'Data member berhasil ditambahkan.',
+        description: `${values.name} berhasil menjadi member.`,
+      });
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    } catch (error) {
+      toast({
+        title: 'Gagal menambahkan data member.',
+        description: `Error : ${error}`,
+      });
+    }
   }
 
   return (
@@ -154,7 +169,6 @@ export function MemberForm() {
             </FormItem>
           )}
         />
-
         <Button type='submit'>Submit</Button>
       </form>
     </Form>
